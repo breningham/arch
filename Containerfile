@@ -1,14 +1,12 @@
-FROM quay.io/toolbx-images/alpine-toolbox:edge
+FROM ghcr.io/ublue-os/bazzite-arch:latest
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
       summary="A cloud-native terminal experience" \
-      maintainer="jorge.castro@gmail.com"
+      maintainer="brendan@ingham.dev"
 
 COPY extra-packages /
-RUN apk update && \
-    apk upgrade && \
-    grep -v '^#' /extra-packages | xargs apk add
+RUN grep -v '^#' /extra-packages | xargs pacman -Syu --noconfirm 
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \
@@ -17,4 +15,3 @@ RUN   ln -fs /bin/sh /usr/bin/sh && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
-     
