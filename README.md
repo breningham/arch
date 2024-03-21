@@ -1,6 +1,6 @@
 # breningham/arch
 
-A custom OCI Image based of of [Bazzite-arch](https://github.com/ublue-os/bazzite-arch) using [boxkit](https://github.com/ublue-os/boxkit) for use in distrobox
+A custom OCI Image based of of [ublue-os/arch-distrobox](https://github.com/ublue-os/arch-distrobox) using [boxkit](https://github.com/ublue-os/boxkit) for use in distrobox
 
 # how to use
 
