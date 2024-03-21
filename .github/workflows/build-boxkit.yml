@@ -95,8 +95,11 @@ jobs:
           containerfiles: |
             ./Containerfile
           image: ${{ env.IMAGE_NAME }}
-          tags: ${{ env.IMAGE_TAGS }}
+          tags: |
+            ${{ steps.generate-tags.outputs.alias_tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          extra-args: |
+            --target=${{ matrix.base_name }}
           oci: false
 
       # Workaround bug where capital letters in your GitHub username make it impossible to push to GHCR.
