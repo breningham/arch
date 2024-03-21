@@ -1,3 +1,5 @@
+[![build-arch](https://github.com/breningham/arch/actions/workflows/build-boxkit.yml/badge.svg?branch=main)](https://github.com/breningham/arch/actions/workflows/build-boxkit.yml)
+
 # breningham/arch
 
 A custom OCI Image based of of [ublue-os/arch-distrobox](https://github.com/ublue-os/arch-distrobox) using [boxkit](https://github.com/ublue-os/boxkit) for use in distrobox
