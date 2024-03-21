@@ -1,16 +1,9 @@
-FROM ghcr.io/ublue-os/arch-distrobox AS arch-base
+FROM ghcr.io/ublue-os/arch-distrobox AS arch
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
       summary="A cloud-native terminal experience" \
       maintainer="brendan@ingham.dev"
-
-RUN pacman -Rnsdd xcursor-breeze --noconfirm
-RUN pacman -Syu xdg-desktop-portal-kde --noconfirm
-
-FROM arch-base AS arch-kde
-
-LABEL name="arch-kde"
 
 COPY extra-packages /
 RUN grep -v '^#' /extra-packages | xargs pacman -Syu --noconfirm 
@@ -26,8 +19,21 @@ RUN  rm -rf \
         /tmp/* \
         /var/cache/pacman/pkg/*
 
+## KDE 
+FROM arch AS arch-kde
+
+LABEL name="arch-kde"
+
+RUN pacman -Rnsdd xcursor-breeze --noconfirm
+RUN pacman -Syu xdg-desktop-portal-kde --noconfirm
+
+RUN  rm -rf \
+        /tmp/* \
+        /var/cache/pacman/pkg/*
+
 FROM arch-kde AS arch-gnome 
 
+## GNOME
 LABEL name="arch-gnome"
 
 # Replace KDE portal with GNOME portal, swap included icon theme.
