@@ -25,6 +25,9 @@ jobs:
       fail-fast: false
       matrix:
         base_name: [arch, arch-kde, arch-gnome]
+        include:
+          - is_latest_version: true
+            is_stable_version: true
     steps:
       - name: Maximize build space
         uses: ublue-os/remove-unwanted-software@v6
