@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/breningham/arch/compare/v1.0.1...v1.0.2) (2024-03-22)
+
+
+### Bug Fixes
+
+* **ci:** tag latest build with latest ([9de53f6](https://github.com/breningham/arch/commit/9de53f6a7739c549789dd764d891e884debff933))
+
 ## [1.0.1](https://github.com/breningham/arch/compare/v1.0.0...v1.0.1) (2024-03-21)
 
 
