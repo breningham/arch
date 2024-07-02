@@ -24,23 +24,20 @@ FROM arch AS arch-kde
 
 LABEL name="arch-kde"
 
-RUN pacman -Rnsdd xcursor-breeze --noconfirm
+# Install KDE Portal
 RUN pacman -Syu xdg-desktop-portal-kde --noconfirm
 
 RUN  rm -rf \
         /tmp/* \
         /var/cache/pacman/pkg/*
 
-FROM arch-kde AS arch-gnome 
+FROM arch AS arch-gnome 
 
 ## GNOME
 LABEL name="arch-gnome"
 
-# Replace KDE portal with GNOME portal, swap included icon theme.
+# install GNOME + GTK portal.
 RUN sed -i 's/-march=native -mtune=native/-march=x86-64 -mtune=generic/g' /etc/makepkg.conf && \
-    pacman -Rnsdd \
-        xdg-desktop-portal-kde \
-        --noconfirm && \
     pacman -S \
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-gnome \
