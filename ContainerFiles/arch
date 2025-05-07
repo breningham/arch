@@ -10,6 +10,10 @@ COPY ../scripts/boxkit.sh /
 COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/arch.packages /
 
+# Run the setup scripts
+RUN chmod +x boxkit.sh distrobox-shims.sh && /boxkit.sh
+RUN rm /boxkit.sh /distrobox-shims.sh /*.packages
+# Clean up pacman cache
 RUN  rm -rf \
         /tmp/* \
         /var/cache/pacman/pkg/*
