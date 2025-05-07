@@ -1,0 +1,16 @@
+FROM ghcr.io/ublue-os/arch-distrobox
+
+LABEL com.github.containers.toolbox="true" \
+      usage="This image is meant to be used with the toolbox or distrobox command" \
+      summary="A cloud-native terminal experience" \
+      maintainer="brendan@ingham.dev"
+
+# Copy the setup scripts and package list
+COPY ../scripts/boxkit.sh /
+COPY ../scripts/distrobox-shims.sh /
+COPY ../packages/arch.packages /
+COPY ../packages/arch-kde.packages /
+
+RUN  rm -rf \
+        /tmp/* \
+        /var/cache/pacman/pkg/*
