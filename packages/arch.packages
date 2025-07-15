@@ -16,7 +16,7 @@ make
 micro
 ncdu
 ncurses
-neofetch
+fastfetch
 neovim
 python3
 ripgrep
